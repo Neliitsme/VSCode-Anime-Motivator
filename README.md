@@ -4,12 +4,18 @@ A Visual Studio Code extension that motivates you with anime gifs and stuff
 
 ![](media/extension-preview.gif)
 
-**This specific branch focuses only on beta releases of the extension. Some stuff might break or there might be some features missing.**
-
 ## Features
 
 - Show afk/working gifs
 - Adds you some motivation to work harder, all in the name of anime girls.
+
+## Repository info
+
+There will be a few branches for this extension:
+
+- **main** - major releases will be happening there.
+- **beta** - for features preview. Will mostly be stable to use, but something might occasionally break.
+- **dev** - for developing purposes. The only reason you might want to look in there is if you wanna see the progress of this extension being developed.
 
 ## Extension Settings
 

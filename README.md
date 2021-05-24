@@ -2,7 +2,7 @@
 
 A Visual Studio Code extension that motivates you with anime gifs and stuff
 
-![](media\extension-preview.gif)
+![](media/extension-preview.gif)
 
 **This specific branch focuses only on beta releases of the extension. Some stuff might break or there might be some features missing.**
 

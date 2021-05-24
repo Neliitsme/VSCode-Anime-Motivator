@@ -1,8 +1,4 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    export let page: "gif" | "empty" = tsvscode.getState()?.page || "empty";
-    
-
 </script>
 
 <style>

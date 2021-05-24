@@ -1,18 +1,21 @@
 import * as vscode from 'vscode';
-import { SidebarProvider } from './SidebarProvider';
+import { SidebarProvider } from './sidebarProvider';
 
 export class Motivator{
     private lastHeartbeat: number = 0;
     private gifShown = false;
     private sidebar: SidebarProvider;
     private gifTimeout = setTimeout(function(){}, 0);
+    private webViewView: vscode.WebviewView;
 
-    constructor(sidebarProvider: SidebarProvider){
+
+    constructor(sidebarProvider: SidebarProvider, webViewView: vscode.WebviewView){
         this.lastHeartbeat = Date.now();
         this.setupEventListeners();
         this.sidebar = sidebarProvider;
+        this.webViewView = webViewView;
     }
-
+    
     private onEvent(){
         let editor = vscode.window.activeTextEditor;
         if (editor) {
@@ -52,6 +55,8 @@ export class Motivator{
     private closeGif() {
         //TODO: there will be logic of gif close
         this.gifShown = false;
+        this.webViewView.webview.html = this.sidebar.getEmptyHtml(this.webViewView.webview);
+
     }
 
     private delayGif() {
@@ -65,8 +70,8 @@ export class Motivator{
     private showGif() {
         this.gifShown = true;
         console.log("Gif show.");
-        //TODO: there will be logic of gif display
-        vscode.window.showInformationMessage("There will be some cute gif.");
+        // vscode.window.showInformationMessage("There will be some cute gif.");
+        this.webViewView.webview.html = this.sidebar.getGifHtml(this.webViewView.webview);
         
     }
     

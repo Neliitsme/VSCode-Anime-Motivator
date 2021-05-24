@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { getNonce } from "./getNonce";
+import { Motivator } from "./motivator";
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
   _view?: vscode.WebviewView;
@@ -11,33 +12,12 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     this._view = webviewView;
 
     webviewView.webview.options = {
-      // Allow scripts in the webview
       enableScripts: true,
-
       localResourceRoots: [this._extensionUri],
     };
 
     webviewView.webview.html = this.getEmptyHtml(webviewView.webview);
-
-    // webviewView.webview.onDidReceiveMessage(async (data) => {
-    //   switch (data.type) {
-    //     case "onInfo": {
-    //       if (!data.value) {
-    //         return;
-    //       }
-    //       vscode.window.showInformationMessage(data.value);
-    //       break;
-    //     }
-    //     case "onError": {
-    //       if (!data.value) {
-    //         return;
-    //       }
-    //       vscode.window.showErrorMessage(data.value);
-    //       break;
-    //     }
-    //   }
-    // }
-    // );
+    new Motivator(this, webviewView);
   }
 
   public revive(panel: vscode.WebviewView) {
@@ -49,10 +29,10 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
       vscode.Uri.joinPath(this._extensionUri, "media", "reset.css")
     );
     const scriptUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "out", "compiled/sidebar.js")
+      vscode.Uri.joinPath(this._extensionUri, "out", "compiled/afk.js")
     );
     const styleMainUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "out", "compiled/sidebar.css")
+      vscode.Uri.joinPath(this._extensionUri, "out", "compiled/afk.css")
     );
     const styleVSCodeUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._extensionUri, "media", "vscode.css")
@@ -88,10 +68,10 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
       vscode.Uri.joinPath(this._extensionUri, "media", "reset.css")
     );
     const scriptUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "out", "compiled/empty.js")
+      vscode.Uri.joinPath(this._extensionUri, "out", "compiled/working.js")
     );
     const styleMainUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "out", "compiled/empty.css")
+      vscode.Uri.joinPath(this._extensionUri, "out", "compiled/working.css")
     );
     const styleVSCodeUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._extensionUri, "media", "vscode.css")

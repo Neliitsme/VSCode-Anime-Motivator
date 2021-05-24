@@ -53,7 +53,6 @@ export class Motivator{
     }
 
     private closeGif() {
-        //TODO: there will be logic of gif close
         this.gifShown = false;
         this.webViewView.webview.html = this.sidebar.getEmptyHtml(this.webViewView.webview);
 
@@ -70,7 +69,6 @@ export class Motivator{
     private showGif() {
         this.gifShown = true;
         console.log("Gif show.");
-        // vscode.window.showInformationMessage("There will be some cute gif.");
         this.webViewView.webview.html = this.sidebar.getGifHtml(this.webViewView.webview);
         
     }
